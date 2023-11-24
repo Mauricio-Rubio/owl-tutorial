@@ -11,7 +11,6 @@ export class PieChart extends Component {
         this.data = Object.values(this.props.data);
         this.color = this.labels.map((_, index) => getColor(index))
         this.chart = null
-        console.log(this);
         onWillStart(() => loadJS(["/web/static/lib/Chart/Chart.js"]))
         onWillUnmount(() => this.chart.destroy())
         onMounted(() => {
@@ -26,12 +25,7 @@ export class PieChart extends Component {
             return;
         }
         const { _index } = activeElement;
-        // console.log(this.props);
-        // console.log(this.data);
-        // console.log(this.color);
-        // console.log(this.label);
-        console.log(this);
-        // this.props.openTShirtsOrders()
+        this.props.openTShirtsOrders(activeElement._chart.data.labels[_index])
     }
 
     renderChart() {
@@ -51,7 +45,7 @@ export class PieChart extends Component {
                 ],
             },
             options: {
-                onClick: this.graphClickEvent
+                onClick: this.graphClickEvent.bind(this)
             }
         });
     }

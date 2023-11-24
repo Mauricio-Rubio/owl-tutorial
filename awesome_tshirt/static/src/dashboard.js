@@ -32,7 +32,6 @@ class AwesomeDashboard extends Component {
 
         onWillStart(async () => {
             this.statistics = await this.tshirtService.loadStatistics()
-            // console.log(this.statistics.orders_by_size)
         })
     }
 
@@ -44,8 +43,23 @@ class AwesomeDashboard extends Component {
         this.action.doAction("crm.action_your_pipeline")
     }
 
-    openTShirtsOrders() {
-        this.action.doAction("awesome_tshirt.orders")
+    openTShirtsOrders(index) {
+        console.log(index);
+        const contextMapping = {
+            's': { search_default_s: '1' },
+            'm': { search_default_m: '1' },
+            'x': { search_default_x: '1' },
+            'xl': { search_default_xl: '1' },
+            'xxl': { search_default_xxl: '1' },
+        }
+        console.log(contextMapping[index]);
+        this.action.doAction({
+            type: "ir.actions.act_window",
+            name: "T shirt Orders",
+            res_model: "awesome_tshirt.order",
+            views: [[false, "kanban"], [false, "form"]],
+            context: contextMapping[index]
+        })
     }
 }
 
