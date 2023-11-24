@@ -25,7 +25,7 @@
 
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'web', 'mail', 'awesome_gallery'],
+    'depends': ['base', 'web', 'mail', 'awesome_gallery', 'crm'],
 
     # always loaded
     'data': [

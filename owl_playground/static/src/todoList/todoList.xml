@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl_playground.todoList" owl="1">
+      <div class="d-inline-block border bg-light p-2 m-2">
+        <div class="d-flex">
+            <h3 class="container "><t t-esc="props.list.name"/></h3>
+            <div class="container d-flex justify-content-end">
+                <span role="button" class="fa fa-remove ms-3 text-danger" t-on-click="removeList"/>
+            </div>
+        </div>
+        <input type="text" placeholder="Add a todo" class="form-control mb-3" t-on-keyup="addTodo" t-ref="input"/>    
+        <t t-foreach="props.list.todos" t-as="todo" t-key="todo.id">
+            <TodoItem todo="todo" />
+          </t>
+      </div>
+    </t>
+</templates>

@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
-
     <t t-name="owl_playground.playground" owl="1">
-        <div class="p-3">
-            hello world
+        <!-- <Navbar apps="apps" currentApp="state.currentApp" selectApp.bind="selectApp"/> -->
+        <Navbar apps="apps" currentApp="state.currentApp.id" selectApp.bind="selectApp"/>
+        <div class="o-action" data-id="ddd">
+            <t t-component="state.currentApp.Component"/>
         </div>
     </t>
-
 </templates>
